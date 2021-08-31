@@ -21,3 +21,19 @@ function checkLastName(lastName)
         return false;
     }
 }
+
+function checkIP(iP)
+{
+    var ipPattern = /^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/;
+    if(iP.value.match(ipPattern))
+    {
+        return true;
+    }
+    else{
+        alert("You have entered an invalid IP address!");
+        iP.focus();  
+        return false;
+    }
+
+
+}

@@ -14,7 +14,7 @@ function validation() {
 }
 
 function checkLastName(lastName) {
-    var letters = /^[a-zA-Z -]+(.*[^-]$)$/;
+    var letters = /^[a-zA-Ząćęłńóśźż -]+(.*[^-]$)$/;
     if (lastName.value.match(letters) && lastName.value.length > 1) {
         return true;
     } else {

@@ -10,6 +10,6 @@ It is supposed to contain fields for:
 
     Text (Cannot be longer than 230 characters)
 
-All fields be checked and cannot be empty to click Submit button.
+All fields have to be checked and cannot be empty to click Submit button.
 
 

@@ -50,7 +50,8 @@ function checkDate(date) {
 
 function checkText(text) {
     var givenText = text.value.toString();
-    if (givenText.length > 0 && givenText.length < 230) {
+    var textPattern = /[a-zA-Z0-9]/;
+    if (givenText.length > 0 && givenText.length < 230 && text.value.match(textPattern)) {
         return true;
     } else {
         alert("Text field cannot be empty and has to contain less than 230 characters!");

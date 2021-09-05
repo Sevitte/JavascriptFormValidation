@@ -14,11 +14,11 @@ function validation() {
 }
 
 function checkLastName(lastName) {
-    var letters = /^[a-zA-Ząćęłńóśźż -]+(.*[^-]$)$/;
+    var letters = /\b([A-ZÀ-ÿ][-,A-z. ']+[ ]*)+([A-zÀ-ÿ]$)/;
     if (lastName.value.match(letters) && lastName.value.length > 1) {
         return true;
     } else {
-        alert('Last name has to contain only letters, spacebar or -, cannot be empty nor end with -!');
+        alert("You have entered and invalid Name or tried to submit an empty field!");
         lastName.focus();
         return false;
     }

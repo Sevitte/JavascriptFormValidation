@@ -10,7 +10,7 @@ form textarea {
     font-size: 18px
 }
 
-[type="datetime-local"] {
+[type="date"] {
     position: fixed;
     left: 250px;
 }

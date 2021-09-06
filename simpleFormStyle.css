@@ -10,11 +10,6 @@ form textarea {
     font-size: 18px
 }
 
-[type="date"] {
-    position: fixed;
-    left: 250px;
-}
-
 [type="text"] {
     position: fixed;
     left: 250px;

@@ -36,13 +36,24 @@ function checkIP(iP) {
 }
 
 function checkDate(date) {
+    var datePattern = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Feb))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
     var today = new Date();
-    var givenDate = Date.parse(date.value);
+    var dateParts = date.value.toString();
+    if(dateParts.contains(".")){
+        dateParts.split(".");
+    }
+    if(dateParts.contains("/")){
+        dateParts.split("/");
+    }
+    if(dateParts.contains("-")){
+        dateParts.split("-");
+    }
+    var givenDate = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
     var dateDifferenceInDays = (today - givenDate) / (24 * 3600 * 1000);
-    if (dateDifferenceInDays < 365 && dateDifferenceInDays > -365) {
-        return true;
+    if(date.value.match(datePattern) && dateDifferenceInDays < 365 && dateDifferenceInDays > -365) {
+            return true;
     } else {
-        alert("Date has to be in time span of one year from today and cannot be empty!");
+        alert("Date has to be in time span of one year from today and cannot be empty! The date pattern should fit day month year." + givenDate);
         date.focus();
         return false;
     }

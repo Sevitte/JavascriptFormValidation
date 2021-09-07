@@ -18,8 +18,9 @@ $(document).ready(function () {
             },
             text: {
                 required: true,
-                minlength: 3,
-                rangelength: [3, 230]
+                minlength: 2,
+                maxlength: 230,
+                textPattern: true
             }
         }
     });
@@ -35,3 +36,8 @@ jQuery.validator.addMethod("notLocalhostIP", function(value, element) {
   // allow any non-whitespace characters as the host part
   return this.optional( element ) || value != "127.0.0.1";
 }, 'Please enter an IP that is not a loopback address.');
+
+jQuery.validator.addMethod("textPattern", function(value, element) {
+  // allow any non-whitespace characters as the host part
+  return this.optional( element ) || /[a-zA-Z0-9]{2}/.test( value );
+}, 'Please enter a valid message.');

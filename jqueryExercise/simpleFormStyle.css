@@ -1,0 +1,22 @@
+form textarea {
+    width: 350px;
+    height: 150px;
+}
+
+[type="submit"] {
+    position: fixed;
+    left: 350px;
+    top: 300px;
+    font-size: 18px
+}
+
+[type="text"] {
+    position: fixed;
+    left: 350px;
+}
+
+p {
+    margin-top: 20px;
+    margin-left: 20px;
+    font-weight: bold;
+}

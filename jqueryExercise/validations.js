@@ -47,7 +47,6 @@ jQuery.validator.addMethod("dateSpan", function(value, element) {
   }
   var parsedDate = Date.parse("".concat(partsOfDate[1], ".", partsOfDate[0], ".", partsOfDate[2]));
   var differenceInYears = (new Date() - parsedDate) / (365 * 24 * 3600 * 1000);
-  console.log(differenceInYears);
   if (differenceInYears >= -1 && differenceInYears <= 1) {
     return true;
   }

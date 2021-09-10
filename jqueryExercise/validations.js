@@ -46,9 +46,19 @@ jQuery.validator.addMethod("dateSpan", function(value, element) {
     partsOfDate = value.split("/");
   }
   var parsedDate = Date.parse("".concat(partsOfDate[1], ".", partsOfDate[0], ".", partsOfDate[2]));
-  var differenceInYears = (new Date() - parsedDate) / (365 * 24 * 3600 * 1000);
+
+  var differenceInYears;
+  if (leapYear(partsOfDate[2])) {
+    differenceInYears = (new Date() - parsedDate) / (366 * 24 * 3600 * 1000);
+  } else {
+    differenceInYears = (new Date() - parsedDate) / (365 * 24 * 3600 * 1000);
+  }
   if (differenceInYears >= -1 && differenceInYears <= 1) {
     return true;
   }
   return false;
 }, 'Please enter the date in 1 year time span.');
+
+function leapYear(year) {
+  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+}

@@ -41,17 +41,16 @@ jQuery.validator.addMethod("textPattern", function(value, element) {
 }, 'Please enter a valid message.');
 
 jQuery.validator.addMethod("dateSpan", function(value, element) {
-  var partsOfDate;
-  if (value.includes("/")) {
-    partsOfDate = value.split("/");
-  }
-  var parsedDate = Date.parse("".concat(partsOfDate[1], ".", partsOfDate[0], ".", partsOfDate[2]));
+  var partsOfDate = splitDate(value)
+  
+  var parsedDate = concatParseDate(partsOfDate);
 
   var differenceInYears;
+  
   if (leapYear(partsOfDate[2])) {
-    differenceInYears = (new Date() - parsedDate) / (366 * 24 * 3600 * 1000);
+    differenceInYears = countDifferenceInYEars(parsedDate, 366);
   } else {
-    differenceInYears = (new Date() - parsedDate) / (365 * 24 * 3600 * 1000);
+    differenceInYears = countDifferenceInYEars(parsedDate, 365);
   }
   if (differenceInYears >= -1 && differenceInYears <= 1) {
     return true;
@@ -61,4 +60,23 @@ jQuery.validator.addMethod("dateSpan", function(value, element) {
 
 function leapYear(year) {
   return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+}
+
+function splitDate(value){
+  var partsOfDate;
+  if (value.includes("/")) {
+    partsOfDate = value.split("/");
+  }
+  return partsOfDate;
+}
+
+function concatParseDate(partsOfDate){
+	  var parsedDate = Date.parse("".concat(partsOfDate[1], ".", partsOfDate[0], ".", partsOfDate[2]));
+    return parsedDate;
+}
+
+function countDifferenceInYEars(parsedDate, numberOfDaysInYear){
+	var differenceInYears;
+  differenceInYears = (new Date() - parsedDate) / (numberOfDaysInYear * 24 * 3600 * 1000);
+  return differenceInYears
 }

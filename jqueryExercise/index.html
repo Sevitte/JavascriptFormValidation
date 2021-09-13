@@ -50,13 +50,9 @@
     }, 'Please enter a valid message.');
 
     jQuery.validator.addMethod("dateSpan", function(value, element) {
-    console.log(value);
     var partsOfDate = splitDate(value)
-    console.log(partsOfDate);
     var parsedDate = concatParseDate(partsOfDate);
-    console.log(parsedDate);
     var differenceInYears;
-    console.log(differenceInYears);
     if (leapYear(partsOfDate[2])) {
       differenceInYears = countDifferenceInYEars(parsedDate, 366);
     } else {

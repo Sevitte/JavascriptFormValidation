@@ -1,4 +1,5 @@
-This is a simple HTML form
+These are two versions a simple HTML form.
+One is using Javascript, the other one jQuery library.
 
 It is supposed to contain fields for:
     

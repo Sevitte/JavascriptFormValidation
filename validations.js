@@ -11,6 +11,7 @@ function validation() {
       }
     }
     return false;
+
   }
   
   function checkLastName(lastName) {
@@ -21,7 +22,7 @@ function validation() {
       alert("You have entered and invalid Name or tried to submit an empty field!");
       lastName.focus();
       return false;
-      
+
     }
   }
   
@@ -74,3 +75,4 @@ function validation() {
   
   }
   
+  var branch
